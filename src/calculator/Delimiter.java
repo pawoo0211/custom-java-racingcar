@@ -23,4 +23,14 @@ public class Delimiter {
         }
         return tokens;
     }
+
+    public static boolean isCanNotDelimit(String input) {
+        if (input == null || input.isEmpty()) {
+            return true;
+        }
+        if (input.length() == 1) {
+            return true;
+        }
+        return false;
+    }
 }
