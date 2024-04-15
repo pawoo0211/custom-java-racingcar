@@ -15,24 +15,27 @@ public class Delimiter {
         List<ValidatedNumber> validatedNumbers = new ArrayList<>();
         if (isCanNotDelimit(input)) {
             validatedNumbers.add(new ValidatedNumber(input));
-            return validatedNumbers;
         }
-        if (input.contains(",") || input.contains(":")) {
-            String[] numbers = Delimiter.splitByCommaOrColon(input);
-            for (String number : numbers) {
-                validatedNumbers.add(new ValidatedNumber(number));
-            }
-            return validatedNumbers;
-        }
-        String[] numbers = Delimiter.splitByCustomDelimiter(input);
-        for (String number : numbers) {
-            validatedNumbers.add(new ValidatedNumber(number));
+        if (!isCanNotDelimit(input)) {
+            String[] numbers = splitByDelimiter(input);
+            addValidationNumber(validatedNumbers, numbers);
         }
         return validatedNumbers;
     }
 
+    public static boolean isCanNotDelimit(String input) {
+        if (input == null || input.isEmpty() || input.length() == 1) {
+            return true;
+        }
+        return false;
+    }
 
-
+    private static String[] splitByDelimiter(String input) {
+        if (input.contains(",") || input.contains(":")) {
+            return splitByCommaOrColon(input);
+        }
+        return splitByCustomDelimiter(input);
+    }
 
     public static String[] splitByCommaOrColon(String input) {
         return input.split(COMMA_OR_COLON);
@@ -49,13 +52,11 @@ public class Delimiter {
         return tokens;
     }
 
-    public static boolean isCanNotDelimit(String input) {
-        if (input == null || input.isEmpty()) {
-            return true;
+    private static List<ValidatedNumber> addValidationNumber(List<ValidatedNumber> validatedNumbers,
+                                                             String[] numbers) {
+        for (String number : numbers) {
+            validatedNumbers.add(new ValidatedNumber(number));
         }
-        if (input.length() == 1) {
-            return true;
-        }
-        return false;
+        return validatedNumbers;
     }
 }
