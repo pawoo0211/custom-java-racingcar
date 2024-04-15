@@ -19,36 +19,36 @@ public class CalculatorTest {
     @ParameterizedTest
     @NullAndEmptySource
     void inputNullOrEmpty(String input) {
-        Assertions.assertThat(calculator.calculate(input)).isEqualTo(0);
+        Assertions.assertThat(calculator.calculateRefactoring(input)).isEqualTo(0);
     }
 
     @Test
     void splitAndSum_숫자_하나() {
-        int result = calculator.calculate("1");
+        int result = calculator.calculateRefactoring("1");
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     void splitAndSum_쉼표_구분자() {
-        int result = calculator.calculate("1,2");
+        int result = calculator.calculateRefactoring("1,2");
         Assertions.assertThat(result).isEqualTo(3);
     }
 
     @Test
     void splitAndSum_쉼표_또는_콜론_구분자() {
-        int result = calculator.calculate("1,2:3");
+        int result = calculator.calculateRefactoring("1,2:3");
         Assertions.assertThat(result).isEqualTo(6);
     }
 
     @Test
     void splitAndSum_custom_구분자() {
-        int result = calculator.calculate("//;\n1;2;3");
+        int result = calculator.calculateRefactoring("//;\n1;2;3");
         Assertions.assertThat(result).isEqualTo(6);
     }
 
     @Test
     public void splitAndSum_negative() throws Exception {
-        Assertions.assertThatThrownBy(() -> calculator.calculate("-1,2,3"))
+        Assertions.assertThatThrownBy(() -> calculator.calculateRefactoring("-1,2,3"))
                 .isInstanceOf(RuntimeException.class);
     }
 }
