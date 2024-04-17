@@ -1,4 +1,4 @@
-package racingcar.presentation;
+package racingcar.presentation.controller;
 
 import racingcar.application.RacingCarGameService;
 import racingcar.application.dto.RacingCarGameRequest;

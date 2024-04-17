@@ -3,6 +3,7 @@ package racingcar.domain.car.entity;
 import racingcar.domain.strategy.NumberStrategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -38,6 +39,6 @@ public class Cars {
             );
         }
 
-        return allMoveCounts;
+        return Collections.unmodifiableList(allMoveCounts);
     }
 }
