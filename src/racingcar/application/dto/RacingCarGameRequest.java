@@ -8,4 +8,12 @@ public class RacingCarGameRequest {
         this.carsNumber = carsNumber;
         this.tryCount = tryCount;
     }
+
+    public int getCarsNumber() {
+        return carsNumber;
+    }
+
+    public int getTryCount() {
+        return tryCount;
+    }
 }
