@@ -10,4 +10,12 @@ public class RacingCarGameResponse {
         this.carName = carName;
         this.moveCounts = moveCounts;
     }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public MoveCounts getMoveCounts() {
+        return moveCounts;
+    }
 }

@@ -1,8 +1,8 @@
 package racingcar.presentation.controller;
 
 import racingcar.application.RacingCarGameService;
-import racingcar.application.dto.RacingCarGameRequest;
-import racingcar.application.dto.RacingCarGameResponse;
+import racingcar.application.dto.request.RacingCarGameRequest;
+import racingcar.application.dto.response.ResultResponse;
 import racingcar.presentation.view.ResultView;
 
 public class RacingCarGameController {
@@ -15,8 +15,7 @@ public class RacingCarGameController {
     }
 
     public void gameStart(RacingCarGameRequest request) {
-        RacingCarGameResponse response = service.gameStart(request);
-
+        ResultResponse response = service.gameStart(request);
         resultView.printGameResult(response);
     }
 }

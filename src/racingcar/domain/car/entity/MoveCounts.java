@@ -33,6 +33,17 @@ public class MoveCounts {
         return true;
     }
 
+    public int getTotalMoveCountByTurn(int turn) {
+        int totalMoveCount = 0;
+        int turnIndex = turn - 1;
+
+        for (int index = 0; index < turnIndex; index++) {
+            totalMoveCount = totalMoveCount + moveCounts.get(index);
+        }
+
+        return totalMoveCount;
+    }
+
     public int getTotalMoveCount() {
         int totalMoveCount = 0;
 
