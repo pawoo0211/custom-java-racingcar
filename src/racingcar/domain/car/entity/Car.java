@@ -1,10 +1,17 @@
 package racingcar.domain.car.entity;
 
-import racingcar.domain.strategy.MoveStrategy;
+import racingcar.domain.car.vo.CarInfo;
+import racingcar.domain.strategy.move.MoveStrategy;
 
 
 public class Car {
+    private String name;
     private MoveCounts moveCounts;
+
+    public Car(String name) {
+        this();
+        this.name = name;
+    }
 
     public Car() {
         moveCounts = new MoveCounts();
@@ -30,7 +37,11 @@ public class Car {
         return 0;
     }
 
-    public int getTotalMoveCountAtTurn(int turn) {
-        return moveCounts.getTotalMoveCountByTurn(turn);
+    public int getTotalMoveCount() {
+        return moveCounts.getTotalMoveCount();
+    }
+
+    public final CarInfo getCarInfo() {
+        return new CarInfo(name, moveCounts);
     }
 }

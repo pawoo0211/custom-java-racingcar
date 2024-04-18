@@ -8,8 +8,9 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.car.entity.Car;
 import racingcar.domain.car.entity.Cars;
 import racingcar.domain.car.entity.MoveCounts;
-import racingcar.domain.strategy.NumberStrategy;
-import racingcar.domain.strategy.ZeroToNineRandom;
+import racingcar.domain.strategy.delimiter.CommaStrategy;
+import racingcar.domain.strategy.move.NumberStrategy;
+import racingcar.domain.strategy.move.ZeroToNineRandom;
 
 import java.util.List;
 
@@ -47,5 +48,25 @@ public class CarTest {
         for (MoveCounts moveCounts : allMoveCounts) {
             System.out.println("car move count : " + moveCounts.getTotalMoveCountByTurn(5));
         }
+    }
+
+    @Test
+    void addCarsByName() {
+        Cars cars = new Cars();
+        String carsName = "pobi,crong,honux";
+
+        Assertions.assertThat(cars.addCarsByName(carsName, new CommaStrategy()))
+                .isEqualTo(3);
+    }
+
+    @Test
+    void getCarInfoList() {
+        Cars cars = new Cars();
+        String carsName = "pobi,crong,honux";
+        cars.addCarsByName(carsName, new CommaStrategy());
+
+        cars.getCarInfoList()
+                .stream()
+                .forEach(carInfo -> System.out.println("자동차 정보 : " + carInfo));
     }
 }

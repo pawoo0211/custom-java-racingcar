@@ -26,11 +26,17 @@ public class MoveCounts {
         return false;
     }
 
-    public int getTotalMoveCountByTurn(int turn) {
-        int totalMoveCount = 0;
-        int turnIndex = turn - 1;
+    public boolean isHighMoveCount(int highMoveCount) {
+        if (getTotalMoveCount() < highMoveCount) {
+            return false;
+        }
+        return true;
+    }
 
-        for (int index = 0; index < turnIndex; index++) {
+    public int getTotalMoveCount() {
+        int totalMoveCount = 0;
+
+        for (int index = 0; index < moveCounts.size(); index++) {
             totalMoveCount = totalMoveCount + moveCounts.get(index);
         }
 
