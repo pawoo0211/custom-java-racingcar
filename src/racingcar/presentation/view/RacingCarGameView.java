@@ -33,18 +33,23 @@ public class RacingCarGameView {
 
     private static void printGameResult(RacingCarGameResponse response) {
         System.out.println("실행 결과");
-        List<MoveCounts> allMoveCounts = response.getAllMoveCounts();
 
+        List<MoveCounts> allMoveCounts = response.getAllMoveCounts();
         int tryCount = response.getTryCount();
-        /**
-         * ToDo
-         * - 해당 로직 서비스 클래스에서 처리하도록 리팩터링
-         */
+
         for (int turn = 1; turn <= tryCount; turn++) {
-            for (MoveCounts moveCounts : allMoveCounts) {
-                int moveCount = moveCounts.getTotalMoveCountByTurn(turn);
-                System.out.print("-".repeat(moveCount));
-            }
+            System.out.println("Turn : " + turn);
+            printMoveAtTurn(allMoveCounts, turn);
+            System.out.println("");
+        }
+    }
+
+    private static void printMoveAtTurn(List<MoveCounts> allMoveCounts, int turn) {
+        final String moveSymbol = "-";
+
+        for (MoveCounts moveCounts : allMoveCounts) {
+            int moveCount = moveCounts.getTotalMoveCountByTurn(turn);
+            System.out.println(moveSymbol.repeat(moveCount));
         }
     }
 }
