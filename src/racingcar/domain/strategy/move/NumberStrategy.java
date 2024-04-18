@@ -1,4 +1,4 @@
-package racingcar.domain.strategy;
+package racingcar.domain.strategy.move;
 
 public class NumberStrategy implements MoveStrategy {
     private static final int MOVABLE_LIMIT = 3;
