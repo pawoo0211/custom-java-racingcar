@@ -2,22 +2,12 @@ package racingcar.application.dto;
 
 import racingcar.domain.car.entity.MoveCounts;
 
-import java.util.List;
-
 public class RacingCarGameResponse {
-    private int tryCount;
-    private List<MoveCounts> allMoveCounts;
+    private String carName;
+    private MoveCounts moveCounts;
 
-    public RacingCarGameResponse(int tryCount, List<MoveCounts> allMoveCounts) {
-        this.tryCount = tryCount;
-        this.allMoveCounts = allMoveCounts;
-    }
-
-    public int getTryCount() {
-        return tryCount;
-    }
-
-    public List<MoveCounts> getAllMoveCounts() {
-        return allMoveCounts;
+    public RacingCarGameResponse(String carName, MoveCounts moveCounts) {
+        this.carName = carName;
+        this.moveCounts = moveCounts;
     }
 }
